@@ -5,6 +5,11 @@
  */
 package lab8_josephmoscoso;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author Joseph
@@ -27,21 +32,416 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_proyecto = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        tf_nombre = new javax.swing.JTextField();
+        sp_duracion = new javax.swing.JSpinner();
+        bt_crearProshecto = new javax.swing.JButton();
+        jd_actividad = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        tf_nombre1 = new javax.swing.JTextField();
+        sp_duracion1 = new javax.swing.JSpinner();
+        bt_crearActividad = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        sp_posibilidades = new javax.swing.JSpinner();
+        cb_actividad = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_proyecto = new javax.swing.JTree();
+        cb_proyectos = new javax.swing.JComboBox<>();
+        bt_actividad = new javax.swing.JButton();
+        bt_proyecto = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        bt_ejecutar = new javax.swing.JButton();
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Creacion proyectos");
+
+        jLabel5.setText("Nombre");
+
+        jLabel6.setText("Duracion");
+
+        bt_crearProshecto.setText("Crear");
+        bt_crearProshecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_crearProshectoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_proyectoLayout = new javax.swing.GroupLayout(jd_proyecto.getContentPane());
+        jd_proyecto.getContentPane().setLayout(jd_proyectoLayout);
+        jd_proyectoLayout.setHorizontalGroup(
+            jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_proyectoLayout.createSequentialGroup()
+                .addGroup(jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_proyectoLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(jLabel4))
+                    .addGroup(jd_proyectoLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sp_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_proyectoLayout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(bt_crearProshecto)))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jd_proyectoLayout.setVerticalGroup(
+            jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_proyectoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jd_proyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(sp_duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(bt_crearProshecto)
+                .addContainerGap())
+        );
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setText("Creacion Actividades");
+
+        jLabel8.setText("Nombre");
+
+        jLabel9.setText("Duracion");
+
+        bt_crearActividad.setText("Crear");
+        bt_crearActividad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_crearActividadMouseClicked(evt);
+            }
+        });
+
+        jLabel10.setText("Posibilidades");
+
+        cb_actividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguna" }));
+        cb_actividad.setBorder(null);
+        cb_actividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_actividadActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_actividadLayout = new javax.swing.GroupLayout(jd_actividad.getContentPane());
+        jd_actividad.getContentPane().setLayout(jd_actividadLayout);
+        jd_actividadLayout.setHorizontalGroup(
+            jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_actividadLayout.createSequentialGroup()
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_actividadLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_actividadLayout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(bt_crearActividad)))
+                .addGap(23, 23, Short.MAX_VALUE))
+            .addGroup(jd_actividadLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sp_duracion1, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(sp_posibilidades))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_actividadLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cb_actividad, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
+        );
+        jd_actividadLayout.setVerticalGroup(
+            jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_actividadLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(sp_duracion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_actividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sp_posibilidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addComponent(cb_actividad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bt_crearActividad)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jt_proyecto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jt_proyecto.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jt_proyecto);
+
+        cb_proyectos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_proyectosItemStateChanged(evt);
+            }
+        });
+        cb_proyectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_proyectosActionPerformed(evt);
+            }
+        });
+
+        bt_actividad.setText("Crear actividad");
+        bt_actividad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_actividadMouseClicked(evt);
+            }
+        });
+
+        bt_proyecto.setText("Crear proyecto");
+        bt_proyecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_proyectoMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Proyectos");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Proyectos");
+
+        bt_ejecutar.setText("Ejecutar ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 312, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(154, 154, 154))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_actividad)
+                            .addComponent(bt_proyecto)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(bt_ejecutar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_proyecto)
+                        .addGap(12, 12, 12)
+                        .addComponent(bt_actividad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_ejecutar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_proyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_proyectoMouseClicked
+        // TODO add your handling code here:
+        try {
+            jd_proyecto.setModal(true);
+            jd_proyecto.pack();
+            jd_proyecto.setLocationRelativeTo(this);
+            jd_proyecto.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_proyectoMouseClicked
+
+    private void bt_crearProshectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearProshectoMouseClicked
+        // TODO add your handling code here:
+        try {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+            modelo.addElement(new proyecto(sp_duracion.getValue().toString(), tf_nombre.getText()));
+            cb_proyectos.setModel(modelo);
+            JOptionPane.showMessageDialog(jd_proyecto, "Proyecto creado");
+            tf_nombre.setText("");
+            jd_proyecto.setVisible(false);
+            actualizar();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_bt_crearProshectoMouseClicked
+
+    private void bt_actividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_actividadMouseClicked
+        // TODO add your handling code here:
+        try {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+            modelo.getElementAt(cb_proyectos.getSelectedIndex());
+            if (((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().isEmpty()) {
+
+            } else {
+                DefaultComboBoxModel m = (DefaultComboBoxModel) cb_actividad.getModel();
+                m.removeAllElements();
+                for (int i = 0; i < ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().size(); i++) {
+                    m.addElement((actividades) ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(i));
+                }
+                m.addElement("Ninguna");
+                cb_actividad.setModel(m);
+            }
+            jd_actividad.setModal(true);
+            jd_actividad.pack();
+            jd_actividad.setLocationRelativeTo(this);
+            jd_actividad.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_bt_actividadMouseClicked
+
+    private void bt_crearActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearActividadMouseClicked
+        // TODO add your handling code here:
+        try {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+            if (cb_actividad.getSelectedItem().toString().equals("Ninguna")) {
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().add(
+                        new actividades(tf_nombre1.getText(), (Integer) sp_duracion1.getValue(), sp_posibilidades.getValue().toString()));
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(
+                        ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().size() - 1).setInicio(1);
+                cb_proyectos.setModel(modelo);
+                JOptionPane.showMessageDialog(jd_actividad, "Actividad creada");
+                jd_actividad.setVisible(false);
+                actualizar();
+            } else {
+                DefaultComboBoxModel m = (DefaultComboBoxModel) cb_actividad.getModel();
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().add(
+                        new actividades(tf_nombre1.getText(), (Integer) sp_duracion1.getValue(), sp_posibilidades.getValue().toString()));
+
+                ((actividades) m.getElementAt(cb_actividad.getSelectedIndex())).getPredecesoras().add(
+                        (actividades) ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(((proyecto) modelo.getElementAt(
+                                cb_proyectos.getSelectedIndex())).getActividades().size() - 1));
+
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(((proyecto) modelo.getElementAt(
+                        cb_proyectos.getSelectedIndex())).getActividades().size() - 1).getSucesoras().add(
+                        ((actividades) m.getElementAt(cb_actividad.getSelectedIndex())));
+                cb_proyectos.setModel(modelo);
+                cb_actividad.setModel(m);
+                JOptionPane.showMessageDialog(jd_actividad, "Actividad creada");
+                jd_actividad.setVisible(false);
+                actualizar();
+            }
+            tf_nombre1.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_bt_crearActividadMouseClicked
+    public void actualizar() {
+        try {
+            proyecto p = (proyecto) cb_proyectos.getSelectedItem();
+            DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+            DefaultMutableTreeNode r = new DefaultMutableTreeNode(p);
+            m.setRoot(r);
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+            raiz.removeAllChildren();
+            DefaultMutableTreeNode n1 = null;
+            DefaultMutableTreeNode n2 = null;
+            DefaultMutableTreeNode n3 = null;
+            for (actividades t : p.getActividades()) {
+                if (t.getPredecesoras().isEmpty() && t.getSucesoras().isEmpty()) {
+                    n1 = new DefaultMutableTreeNode(t);
+                    raiz.add(n1);
+                } else {
+                    for (actividades s : t.getPredecesoras()) {
+                        n2 = new DefaultMutableTreeNode(s);
+                        for (actividades c : s.getSucesoras()) {
+                            n3 = new DefaultMutableTreeNode(c);
+                            n3.add(n2);
+                        }
+                        raiz.add(n3);
+                    }
+                }
+            }
+            m.reload();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void cb_actividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_actividadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_actividadActionPerformed
+
+    private void cb_proyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_proyectosActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cb_proyectosActionPerformed
+
+    private void cb_proyectosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_proyectosItemStateChanged
+        // TODO add your handling code here:
+        try {
+            if (evt.getStateChange() == 1) {
+                proyecto p = (proyecto) cb_proyectos.getSelectedItem();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                DefaultMutableTreeNode r = new DefaultMutableTreeNode(p);
+                m.setRoot(r);
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+                raiz.removeAllChildren();
+                DefaultMutableTreeNode n1 = null;
+                DefaultMutableTreeNode n2 = null;
+                DefaultMutableTreeNode n3 = null;
+                for (actividades t : p.getActividades()) {
+                    if (t.getPredecesoras().isEmpty() && t.getSucesoras().isEmpty()) {
+                        n1 = new DefaultMutableTreeNode(t);
+                        raiz.add(n1);
+                    } else {
+                        for (actividades s : t.getPredecesoras()) {
+                            n2 = new DefaultMutableTreeNode(s);
+                            for (actividades c : s.getSucesoras()) {
+                                n3 = new DefaultMutableTreeNode(c);
+                                n3.add(n2);
+                            }
+                            raiz.add(n3);
+                        }
+                    }
+                }
+                m.reload();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_cb_proyectosItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -79,5 +479,30 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_actividad;
+    private javax.swing.JButton bt_crearActividad;
+    private javax.swing.JButton bt_crearProshecto;
+    private javax.swing.JButton bt_ejecutar;
+    private javax.swing.JButton bt_proyecto;
+    private javax.swing.JComboBox<String> cb_actividad;
+    private javax.swing.JComboBox<String> cb_proyectos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JDialog jd_actividad;
+    private javax.swing.JDialog jd_proyecto;
+    private javax.swing.JTree jt_proyecto;
+    private javax.swing.JSpinner sp_duracion;
+    private javax.swing.JSpinner sp_duracion1;
+    private javax.swing.JSpinner sp_posibilidades;
+    private javax.swing.JTextField tf_nombre;
+    private javax.swing.JTextField tf_nombre1;
     // End of variables declaration//GEN-END:variables
 }
