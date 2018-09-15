@@ -484,7 +484,6 @@ public class principal extends javax.swing.JFrame {
             }
             tf_nombre1.setText("");
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_bt_crearActividadMouseClicked
     public void actualizar() {
@@ -515,7 +514,6 @@ public class principal extends javax.swing.JFrame {
             }
             m.reload();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
     private void cb_actividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_actividadActionPerformed
@@ -558,7 +556,6 @@ public class principal extends javax.swing.JFrame {
                 m.reload();
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_cb_proyectosItemStateChanged
 
@@ -698,9 +695,10 @@ public class principal extends javax.swing.JFrame {
             for (int i = 0; i < tb_ejecucion.getRowCount(); i++) {
                 Hilo h = new Hilo("", (int) tb_ejecucion.getValueAt(i, 1));
                 h.start();
-                tb_ejecucion.setValueAt(h.getEstado(), i, 2);
+                tb_ejecucion.setValueAt("Terminado", i, 2);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_bt_empezarMouseClicked
 

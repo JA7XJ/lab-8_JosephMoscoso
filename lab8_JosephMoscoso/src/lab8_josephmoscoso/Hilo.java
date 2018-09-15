@@ -71,7 +71,7 @@ public class Hilo extends Thread {
             }
             try {
                 Thread.sleep(1000);
-                duracion -= 1000;
+              //  duracion -= 1000;
             } catch (InterruptedException e) {
             }
             estado = "Terminado";
