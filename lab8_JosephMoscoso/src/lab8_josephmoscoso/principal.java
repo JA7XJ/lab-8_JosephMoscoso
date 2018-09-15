@@ -692,13 +692,13 @@ public class principal extends javax.swing.JFrame {
     private void bt_empezarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empezarMouseClicked
         // TODO add your handling code here:
         try {
+            DefaultTableModel m=(DefaultTableModel) tb_ejecucion.getModel();
+            int pos=cb_proyectos.getSelectedIndex();
             for (int i = 0; i < tb_ejecucion.getRowCount(); i++) {
-                Hilo h = new Hilo("", (int) tb_ejecucion.getValueAt(i, 1));
+                Hilo h = new Hilo("", (int) tb_ejecucion.getValueAt(i, 1)*1000,m,pos);
                 h.start();
-                tb_ejecucion.setValueAt("Terminado", i, 2);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_bt_empezarMouseClicked
 

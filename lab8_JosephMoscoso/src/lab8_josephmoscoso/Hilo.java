@@ -7,7 +7,9 @@ package lab8_josephmoscoso;
 
 import javafx.scene.control.ComboBox;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,12 +21,29 @@ public class Hilo extends Thread {
     private int duracion;
     private boolean vive;
     private boolean sigue;
+    private DefaultTableModel m;
+    private int pos;
+
+    public Hilo(String estado, int duracion, DefaultTableModel m, int pos) {
+        this.estado = estado;
+        this.duracion = duracion;
+        this.m = m;
+        this.pos = pos;
+        vive = true;
+        sigue = true;
+    }
+
+    public Hilo(String estado, int duracion, DefaultTableModel m) {
+        this.estado = estado;
+        this.duracion = duracion;
+        this.m = m;
+
+    }
 
     public Hilo(String estado, int duracion) {
         this.estado = estado;
         this.duracion = duracion;
-        vive = true;
-        sigue = true;
+
     }
 
     public String getEstado() {
@@ -58,7 +77,15 @@ public class Hilo extends Thread {
     public void setSigue(boolean sigue) {
         this.sigue = sigue;
     }
-    int c = 0;
+    int c = 1;
+
+    public DefaultTableModel getM() {
+        return m;
+    }
+
+    public void setM(DefaultTableModel m) {
+        this.m = m;
+    }
 
     @Override
     public void run() {
@@ -71,10 +98,12 @@ public class Hilo extends Thread {
             }
             try {
                 Thread.sleep(1000);
-              //  duracion -= 1000;
+                duracion -= 1000;
             } catch (InterruptedException e) {
             }
             estado = "Terminado";
+            JOptionPane.showMessageDialog(null, estado);
+            m.setValueAt(estado, pos, 2);
         }
     }
 
