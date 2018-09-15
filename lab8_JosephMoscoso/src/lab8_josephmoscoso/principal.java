@@ -694,6 +694,14 @@ public class principal extends javax.swing.JFrame {
 
     private void bt_empezarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empezarMouseClicked
         // TODO add your handling code here:
+        try {
+            for (int i = 0; i < tb_ejecucion.getRowCount(); i++) {
+                Hilo h = new Hilo("", (int) tb_ejecucion.getValueAt(i, 1));
+                h.start();
+                tb_ejecucion.setValueAt(h.getEstado(), i, 2);
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_bt_empezarMouseClicked
 
     /**
