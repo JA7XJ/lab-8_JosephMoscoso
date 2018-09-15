@@ -57,6 +57,9 @@ public class principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bt_ejecutar = new javax.swing.JButton();
+        modificar = new javax.swing.JButton();
+        duracion = new javax.swing.JButton();
+        eliminar = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Creacion proyectos");
@@ -233,6 +236,27 @@ public class principal extends javax.swing.JFrame {
 
         bt_ejecutar.setText("Ejecutar ");
 
+        modificar.setText("Modificar nombre");
+        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarMouseClicked(evt);
+            }
+        });
+
+        duracion.setText("Modificar duracion");
+        duracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                duracionMouseClicked(evt);
+            }
+        });
+
+        eliminar.setText("Eliminar");
+        eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,21 +265,33 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(154, 154, 154))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_actividad)
-                            .addComponent(bt_proyecto)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(modificar)
+                                .addGap(56, 56, 56))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_proyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bt_actividad)
+                                    .addComponent(bt_proyecto)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(bt_ejecutar)))
+                                .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(bt_ejecutar)))
-                        .addGap(18, 18, 18)
+                                .addComponent(duracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(eliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(154, 154, 154))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +309,13 @@ public class principal extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(bt_actividad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bt_ejecutar))
+                        .addComponent(bt_ejecutar)
+                        .addGap(52, 52, 52)
+                        .addComponent(modificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(duracion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eliminar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -351,8 +393,9 @@ public class principal extends javax.swing.JFrame {
                         new actividades(tf_nombre1.getText(), (Integer) sp_duracion1.getValue(), sp_posibilidades.getValue().toString()));
 
                 ((actividades) m.getElementAt(cb_actividad.getSelectedIndex())).getPredecesoras().add(
-                        (actividades) ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(((proyecto) modelo.getElementAt(
-                                cb_proyectos.getSelectedIndex())).getActividades().size() - 1));
+                        (actividades) ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(
+                                ((proyecto) modelo.getElementAt(
+                                        cb_proyectos.getSelectedIndex())).getActividades().size() - 1));
 
                 ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades().get(((proyecto) modelo.getElementAt(
                         cb_proyectos.getSelectedIndex())).getActividades().size() - 1).getSucesoras().add(
@@ -443,6 +486,83 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cb_proyectosItemStateChanged
 
+    private void modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseClicked
+        // TODO add your handling code here:
+        try {
+            Object v1 = jt_proyecto.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof proyecto) {
+                proyecto_seleccionado = (proyecto) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                String nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+                DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).setNombre(nombre);
+                proyecto_seleccionado.setNombre(nombre);
+                m.reload();
+                cb_proyectos.setModel(modelo);
+                JOptionPane.showMessageDialog(this, "Nombre editado con exito");
+            } else {
+                actividad_seleccionada = (actividades) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                actividad_seleccionada.setNombre(JOptionPane.showInputDialog("Ingrese el nuevo nombre"));
+                JOptionPane.showMessageDialog(this, "Nombre editado con exito");
+                m.reload();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_modificarMouseClicked
+
+    private void duracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_duracionMouseClicked
+        // TODO add your handling code here:
+        try {
+            Object v1 = jt_proyecto.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof proyecto) {
+                proyecto_seleccionado = (proyecto) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                String nombre = JOptionPane.showInputDialog("Ingrese la nueva duracion");
+                DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+                ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).setDuracion(nombre);
+                proyecto_seleccionado.setDuracion(nombre);
+                m.reload();
+                cb_proyectos.setModel(modelo);
+                JOptionPane.showMessageDialog(this, "Duracion editada con exito");
+            } else {
+                actividad_seleccionada = (actividades) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                actividad_seleccionada.setDuracion(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva duracion")));
+                JOptionPane.showMessageDialog(this, "Duracion editada con exito");
+                m.reload();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_duracionMouseClicked
+
+    private void eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarMouseClicked
+        // TODO add your handling code here:
+        try {
+            Object v1 = jt_proyecto.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            if (nodo_seleccionado.getUserObject() instanceof proyecto) {
+                proyecto_seleccionado = (proyecto) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                m.removeNodeFromParent(nodo_seleccionado);
+                DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+                modelo.removeElementAt(cb_proyectos.getSelectedIndex());
+                m.reload();
+                cb_proyectos.setModel(modelo);
+                JOptionPane.showMessageDialog(this, "Eliminado con exito");
+            } else {
+                actividad_seleccionada = (actividades) nodo_seleccionado.getUserObject();
+                DefaultTreeModel m = (DefaultTreeModel) jt_proyecto.getModel();
+                m.removeNodeFromParent(nodo_seleccionado);
+                JOptionPane.showMessageDialog(this, "Eliminado con exito");
+                m.reload();
+            } 
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_eliminarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -486,6 +606,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_proyecto;
     private javax.swing.JComboBox<String> cb_actividad;
     private javax.swing.JComboBox<String> cb_proyectos;
+    private javax.swing.JButton duracion;
+    private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -499,10 +621,14 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_actividad;
     private javax.swing.JDialog jd_proyecto;
     private javax.swing.JTree jt_proyecto;
+    private javax.swing.JButton modificar;
     private javax.swing.JSpinner sp_duracion;
     private javax.swing.JSpinner sp_duracion1;
     private javax.swing.JSpinner sp_posibilidades;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
     // End of variables declaration//GEN-END:variables
+    DefaultMutableTreeNode nodo_seleccionado;
+    actividades actividad_seleccionada;
+    proyecto proyecto_seleccionado;
 }
