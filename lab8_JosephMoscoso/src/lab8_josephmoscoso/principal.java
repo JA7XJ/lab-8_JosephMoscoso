@@ -49,6 +49,10 @@ public class principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         sp_posibilidades = new javax.swing.JSpinner();
         cb_actividad = new javax.swing.JComboBox<>();
+        jd_ejecutar = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb_ejecucion = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_proyecto = new javax.swing.JTree();
         cb_proyectos = new javax.swing.JComboBox<>();
@@ -196,6 +200,58 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        tb_ejecucion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tb_ejecucion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Duracion", "Estado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tb_ejecucion);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setText("Ejecucion de proyecto");
+
+        javax.swing.GroupLayout jd_ejecutarLayout = new javax.swing.GroupLayout(jd_ejecutar.getContentPane());
+        jd_ejecutar.getContentPane().setLayout(jd_ejecutarLayout);
+        jd_ejecutarLayout.setHorizontalGroup(
+            jd_ejecutarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ejecutarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(102, 102, 102))
+            .addGroup(jd_ejecutarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jd_ejecutarLayout.setVerticalGroup(
+            jd_ejecutarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ejecutarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jt_proyecto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -235,6 +291,11 @@ public class principal extends javax.swing.JFrame {
         jLabel2.setText("Proyectos");
 
         bt_ejecutar.setText("Ejecutar ");
+        bt_ejecutar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_ejecutarMouseClicked(evt);
+            }
+        });
 
         modificar.setText("Modificar nombre");
         modificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -562,6 +623,20 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_eliminarMouseClicked
+    public void establecer(){
+        
+    }
+    private void bt_ejecutarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ejecutarMouseClicked
+        // TODO add your handling code here:
+        try {
+            establecer();
+            jd_ejecutar.setModal(true);
+            jd_ejecutar.pack();
+            jd_ejecutar.setLocationRelativeTo(this);
+            jd_ejecutar.setVisible(false);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_ejecutarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -611,6 +686,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -618,13 +694,16 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_actividad;
+    private javax.swing.JDialog jd_ejecutar;
     private javax.swing.JDialog jd_proyecto;
     private javax.swing.JTree jt_proyecto;
     private javax.swing.JButton modificar;
     private javax.swing.JSpinner sp_duracion;
     private javax.swing.JSpinner sp_duracion1;
     private javax.swing.JSpinner sp_posibilidades;
+    private javax.swing.JTable tb_ejecucion;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
     // End of variables declaration//GEN-END:variables

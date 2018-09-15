@@ -17,6 +17,7 @@ public class actividades {
     private int Inicio;
     private int Duracion;
     private int Final;
+    public String estado;
     ArrayList<actividades> Predecesoras = new ArrayList();
     ArrayList<actividades> Sucesoras = new ArrayList();
     private String Posibilidad;
@@ -27,6 +28,15 @@ public class actividades {
         this.Posibilidad = Posibilidad;
     }
 
+    public actividades(String Nombre, int Inicio, int Duracion, int Final, String estado, String Posibilidad) {
+        this.Nombre = Nombre;
+        this.Inicio = Inicio;
+        this.Duracion = Duracion;
+        this.Final = Final;
+        this.estado = estado;
+        this.Posibilidad = Posibilidad;
+    }
+    
     public actividades() {
     }
 
@@ -86,6 +96,14 @@ public class actividades {
         this.Posibilidad = Posibilidad;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     @Override
     public String toString() {
         return Nombre;
