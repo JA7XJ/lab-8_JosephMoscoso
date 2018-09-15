@@ -7,6 +7,7 @@ package lab8_josephmoscoso;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -53,6 +54,7 @@ public class principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tb_ejecucion = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
+        bt_empezar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_proyecto = new javax.swing.JTree();
         cb_proyectos = new javax.swing.JComboBox<>();
@@ -229,6 +231,13 @@ public class principal extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Ejecucion de proyecto");
 
+        bt_empezar.setText("Empezar");
+        bt_empezar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_empezarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_ejecutarLayout = new javax.swing.GroupLayout(jd_ejecutar.getContentPane());
         jd_ejecutar.getContentPane().setLayout(jd_ejecutarLayout);
         jd_ejecutarLayout.setHorizontalGroup(
@@ -241,6 +250,10 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jd_ejecutarLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(bt_empezar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_ejecutarLayout.setVerticalGroup(
             jd_ejecutarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +261,9 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(bt_empezar)
                 .addContainerGap())
         );
 
@@ -619,12 +634,51 @@ public class principal extends javax.swing.JFrame {
                 m.removeNodeFromParent(nodo_seleccionado);
                 JOptionPane.showMessageDialog(this, "Eliminado con exito");
                 m.reload();
-            } 
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_eliminarMouseClicked
-    public void establecer(){
-        
+    public void establecer() {
+        try {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_proyectos.getModel();
+            tb_ejecucion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+            tb_ejecucion.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "Nombre", "Duracion", "Estado"
+                    }
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class
+                };
+                boolean[] canEdit = new boolean[]{
+                    false, false, false
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+            for (actividades t : ((proyecto) modelo.getElementAt(cb_proyectos.getSelectedIndex())).getActividades()) {
+                if (t.getPredecesoras().isEmpty()) {
+                    Object row[] = {t.getNombre(), t.getDuracion(), t.getEstado()};
+                    DefaultTableModel m
+                            = (DefaultTableModel) tb_ejecucion.getModel();
+                    m.addRow(row);
+                } else {
+                    Object row[] = {t.getNombre(), t.getDuracion(), t.getEstado()};
+                    DefaultTableModel m
+                            = (DefaultTableModel) tb_ejecucion.getModel();
+                    m.addRow(row);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     private void bt_ejecutarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ejecutarMouseClicked
         // TODO add your handling code here:
@@ -633,10 +687,14 @@ public class principal extends javax.swing.JFrame {
             jd_ejecutar.setModal(true);
             jd_ejecutar.pack();
             jd_ejecutar.setLocationRelativeTo(this);
-            jd_ejecutar.setVisible(false);
+            jd_ejecutar.setVisible(true);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_bt_ejecutarMouseClicked
+
+    private void bt_empezarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empezarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_empezarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -678,6 +736,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_crearActividad;
     private javax.swing.JButton bt_crearProshecto;
     private javax.swing.JButton bt_ejecutar;
+    private javax.swing.JButton bt_empezar;
     private javax.swing.JButton bt_proyecto;
     private javax.swing.JComboBox<String> cb_actividad;
     private javax.swing.JComboBox<String> cb_proyectos;
